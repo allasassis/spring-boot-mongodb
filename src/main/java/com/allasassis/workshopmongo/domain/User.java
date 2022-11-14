@@ -1,9 +1,12 @@
 package com.allasassis.workshopmongo.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="user")	// document indica que ela corresponde a uma coleção no MongoDb
@@ -16,6 +19,10 @@ public class User implements Serializable{
 	
 	private String name;
 	private String email;
+	
+	// lazy = true, não deixa a coleção de post vir junto, quando você faz um relatório de usuários no banco de dados
+	@DBRef(lazy = true) // essa anotação referência para outra coleção do MongoDB
+	private List<Post> posts = new ArrayList<>();
 	
 	public User() {
 		
@@ -49,6 +56,14 @@ public class User implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
 
 	@Override
