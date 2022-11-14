@@ -35,6 +35,17 @@ public class UserService {
 		repo.deleteById(id);
 	}
 	
+	public User update(User obj) {
+		User newObj = repo.findById(obj.getId()).get(); // o get transforma o objeto que era optional em User novamente
+		updateData(newObj, obj);
+		return repo.save(newObj);
+	}
+	
+	private void updateData(User newObj, User obj) {
+		newObj.setName(obj.getName());
+		newObj.setEmail(obj.getEmail());
+	}
+
 	// Colocaremos o fromDTO no service, porque pode ser que ele precise acessar o banco de dados no futuro, e o repositório está instanciado aqui
 	public User fromDTO(UserDTO objDto) {
 		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
