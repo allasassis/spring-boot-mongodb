@@ -3,7 +3,7 @@
 
 # Sobre o projeto
 
-API Restful com Spring Boot e banco MongoDB é uma aplicação java web com banco de dados orientado a agregados (MongoDB), construída durante o curso Java do professor Nélio Alves, da [DevSuperior](https://devsuperior.com "Site da DevSuperior").
+API Restful com Spring Boot e banco MongoDB é uma aplicação java web com banco de dados orientado a documentos (MongoDB).
 
 A aplicação consiste em criar uma API Restful com operações CRUD para um banco de dados orientado a documentos, usando Springboot 3 e MongoDB, é possível atualizar, deletar e buscar dados com SpringData no MongoRepository, por uma aplicação Spring/Java.
 
